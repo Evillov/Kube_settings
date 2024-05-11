@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+   metadata:
+     name: nginx-3
+     labels:
+       app: myapp
+       type: front-end
+   spec:
+     containers:
+     - name: nginx-container-2
+       image: nginx
+     - name: busybox
+       image: busybox
+  replicas: 4
+  selector:
+    matchLabels:
+        type: front-end
+        
